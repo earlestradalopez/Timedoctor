@@ -18,7 +18,7 @@ I create a new silent company
 
 I verify the Activity Timeuse
     ${TokenId} =            getAuthorizationDetails
-    Sleep                   360s # wait for 3 mins to get the activity timeuse logs
+    Sleep                   360s
     ${f_exist} =            getActivityTimeuse      ${TokenId}
     Should Be True          ${f_exist}
 
