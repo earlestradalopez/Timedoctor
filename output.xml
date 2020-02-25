@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.8.1 on win32)" generated="20200224 19:49:54.872" rpa="false">
+<suite id="s1" name="Timedoctor" source="C:\Timedoctor\Test_Cases\timedoctor.robot">
+<test id="s1-t1" name="Test Case 1">
+<kw name="I create a new silent company" library="main">
+<kw name="Signup" library="functions">
+<assign>
+<var>${Email}</var>
+</assign>
+<msg timestamp="20200224 19:49:57.329" level="INFO">{'data': {'token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IlhsU1paYVluQXdBRXo3ekoiLCJyZXYiOjAsImV4cCI6IjIwMjAtMDgtMjNUMDM6NDk6NTcrMDA6MDAiLCJkZXYiOiJyZWdpc3RlciIsInJvIjowfQ.JpHJPlQnQKS41ph0vLPcU8eEwj5zi2zVeUU3gsjmfUw', 'expires': '2020-08-23T03:49:57+00:00', 'createdAt': '2020-02-25T03:49:57.879Z', 'userId': 'XlSZZaYnAwAEz7zJ', 'companyId': 'XlSZZaYnAwAEz7zK', 'workspaceId': 'XlSZZaYnAwAEz7zK', 'noWorkspaces': True}}</msg>
+<msg timestamp="20200224 19:49:57.329" level="INFO">${Email} = qa-automation-earl-2020-02-24.19.49@timedoctor.dev</msg>
+<status status="PASS" starttime="20200224 19:49:55.168" endtime="20200224 19:49:57.329"></status>
+</kw>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${Email}</arg>
+</arguments>
+<msg timestamp="20200224 19:49:57.329" level="INFO">Length is 50</msg>
+<status status="PASS" starttime="20200224 19:49:57.329" endtime="20200224 19:49:57.329"></status>
+</kw>
+<status status="PASS" starttime="20200224 19:49:55.168" endtime="20200224 19:49:57.329"></status>
+</kw>
+<kw name="I download Timedoctor application" library="main">
+<kw name="Download File" library="functions">
+<arguments>
+<arg>https://s3.amazonaws.com/sfproc-downloads/3.0.52/windows/bitrock/timedoctor2-setup-3.0.52-windows.exe</arg>
+<arg>installer/timedoctor2-setup-3.0.52-windows.exe</arg>
+</arguments>
+<msg timestamp="20200224 19:50:47.665" level="INFO">Beginning file download with urllib2...
+Download completed...</msg>
+<status status="PASS" starttime="20200224 19:49:57.329" endtime="20200224 19:50:47.665"></status>
+</kw>
+<status status="PASS" starttime="20200224 19:49:57.329" endtime="20200224 19:50:47.665"></status>
+</kw>
+<kw name="I install the Timedoctor application" library="main">
+<kw name="Run File" library="functions">
+<arguments>
+<arg>installer/timedoctor2-setup-3.0.52-windows.exe</arg>
+</arguments>
+<status status="PASS" starttime="20200224 19:50:47.665" endtime="20200224 19:50:48.430"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${app_delay}</arg>
+</arguments>
+<msg timestamp="20200224 19:51:03.449" level="INFO">Slept 15 seconds</msg>
+<status status="PASS" starttime="20200224 19:50:48.430" endtime="20200224 19:51:03.449"></status>
+</kw>
+<kw name="Window Activate" library="functions">
+<arguments>
+<arg>Setup TkTopLevel</arg>
+</arguments>
+<msg timestamp="20200224 19:51:03.465" level="INFO">Setup</msg>
+<status status="PASS" starttime="20200224 19:51:03.449" endtime="20200224 19:51:03.465"></status>
+</kw>
+<kw name="Send Keys" library="functions">
+<arguments>
+<arg>enter 2</arg>
+</arguments>
+<status status="PASS" starttime="20200224 19:51:03.465" endtime="20200224 19:51:05.653"></status>
+</kw>
+<kw name="Send Keys" library="functions">
+<arguments>
+<arg>enter 1</arg>
+</arguments>
+<status status="PASS" starttime="20200224 19:51:05.653" endtime="20200224 19:51:06.732"></status>
+</kw>
+<kw name="Check File Exist" library="functions">
+<arguments>
+<arg>${user_path}/Time Doctor 2/timedoctor2.exe</arg>
+</arguments>
+<assign>
+<var>${f_exist}</var>
+</assign>
+<msg timestamp="20200224 19:51:16.812" level="INFO">${f_exist} = True</msg>
+<status status="PASS" starttime="20200224 19:51:06.732" endtime="20200224 19:51:16.812"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${f_exist}</arg>
+</arguments>
+<status status="PASS" starttime="20200224 19:51:16.812" endtime="20200224 19:51:16.812"></status>
+</kw>
+<kw name="Check File Exist" library="functions">
+<arguments>
+<arg>${user_path}/Time Doctor 2/uninstall.exe</arg>
+</arguments>
+<assign>
+<var>${f_exist}</var>
+</assign>
+<msg timestamp="20200224 19:51:31.847" level="INFO">${f_exist} = True</msg>
+<status status="PASS" starttime="20200224 19:51:16.812" endtime="20200224 19:51:31.847"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${f_exist}</arg>
+</arguments>
+<status status="PASS" starttime="20200224 19:51:31.847" endtime="20200224 19:51:31.847"></status>
+</kw>
+<kw name="Send Keys" library="functions">
+<arguments>
+<arg>enter 1</arg>
+</arguments>
+<status status="PASS" starttime="20200224 19:51:31.847" endtime="20200224 19:51:32.894"></status>
+</kw>
+<status status="PASS" starttime="20200224 19:50:47.665" endtime="20200224 19:51:32.894"></status>
+</kw>
+<kw name="I log in to Timedoctor application" library="main">
+<kw name="Run File" library="functions">
+<arguments>
+<arg>${user_path}/Time Doctor 2/timedoctor2.exe</arg>
+</arguments>
+<status status="PASS" starttime="20200224 19:51:32.894" endtime="20200224 19:51:32.894"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${app_delay}</arg>
+</arguments>
+<msg timestamp="20200224 19:51:47.897" level="INFO">Slept 15 seconds</msg>
+<status status="PASS" starttime="20200224 19:51:32.894" endtime="20200224 19:51:47.897"></status>
+</kw>
+<kw name="Window Activate" library="functions">
+<arguments>
+<arg>Time Doctor 2</arg>
+</arguments>
+<msg timestamp="20200224 19:51:47.897" level="INFO">Time Doctor 2 | v3.0.52 | Company Time 3:51 AM - Time Doctor 2</msg>
+<status status="PASS" starttime="20200224 19:51:47.897" endtime="20200224 19:51:47.897"></status>
+</kw>
+<kw name="Mouse Move" library="functions">
+<arguments>
+<arg>135 55 1</arg>
+</arguments>
+<status status="PASS" starttime="20200224 19:51:47.897" endtime="20200224 19:51:50.413"></status>
+</kw>
+<kw name="Mouse Click" library="functions">
+<arguments>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20200224 19:51:50.413" endtime="20200224 19:51:51.541"></status>
+</kw>
+<kw name="Mouse Move" library="functions">
+<arguments>
+<arg>155 75 1</arg>
+</arguments>
+<status status="PASS" starttime="20200224 19:51:51.541" endtime="20200224 19:51:52.646"></status>
+</kw>
+<kw name="Mouse Click" library="functions">
+<arguments>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20200224 19:51:52.646" endtime="20200224 19:51:53.783"></status>
+</kw>
+<kw name="Send Keys" library="functions">
+<arguments>
+<arg>y 30</arg>
+</arguments>
+<status status="PASS" starttime="20200224 19:51:53.783" endtime="20200224 19:52:23.796"></status>
+</kw>
+<kw name="Window Activate" library="functions">
+<arguments>
+<arg>Time Doctor 2</arg>
+</arguments>
+<msg timestamp="20200224 19:52:23.796" level="INFO">Time Doctor 2 | v3.0.52 | Local Time 7:52 PM - Time Doctor 2</msg>
+<status status="PASS" starttime="20200224 19:52:23.796" endtime="20200224 19:52:23.796"></status>
+</kw>
+<kw name="Get Set Config" library="functions">
+<arguments>
+<arg>DEFAULT email</arg>
+</arguments>
+<assign>
+<var>${Email}</var>
+</assign>
+<msg timestamp="20200224 19:52:23.812" level="INFO">${Email} = qa-automation-earl-2020-02-24.19.49@timedoctor.dev</msg>
+<status status="PASS" starttime="20200224 19:52:23.796" endtime="20200224 19:52:23.812"></status>
+</kw>
+<kw name="Key Write" library="functions">
+<arguments>
+<arg>${Email}</arg>
+</arguments>
+<status status="PASS" starttime="20200224 19:52:23.812" endtime="20200224 19:52:23.827"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>1s</arg>
+</arguments>
+<msg timestamp="20200224 19:52:24.832" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20200224 19:52:23.827" endtime="20200224 19:52:24.832"></status>
+</kw>
+<kw name="Send Keys" library="functions">
+<arguments>
+<arg>tab 1</arg>
+</arguments>
+<status status="PASS" starttime="20200224 19:52:24.832" endtime="20200224 19:52:25.860"></status>
+</kw>
+<kw name="Key Write" library="functions">
+<arguments>
+<arg>123456</arg>
+</arguments>
+<status status="PASS" starttime="20200224 19:52:25.860" endtime="20200224 19:52:25.864"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>1s</arg>
+</arguments>
+<msg timestamp="20200224 19:52:26.868" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20200224 19:52:25.864" endtime="20200224 19:52:26.868"></status>
+</kw>
+<kw name="Send Keys" library="functions">
+<arguments>
+<arg>enter 5</arg>
+</arguments>
+<status status="PASS" starttime="20200224 19:52:26.868" endtime="20200224 19:52:31.876"></status>
+</kw>
+<kw name="Send Keys" library="functions">
+<arguments>
+<arg>tab 1</arg>
+</arguments>
+<status status="PASS" starttime="20200224 19:52:31.876" endtime="20200224 19:52:32.908"></status>
+</kw>
+<kw name="Send Keys" library="functions">
+<arguments>
+<arg>tab 1</arg>
+</arguments>
+<status status="PASS" starttime="20200224 19:52:32.908" endtime="20200224 19:52:33.955"></status>
+</kw>
+<kw name="Send Keys" library="functions">
+<arguments>
+<arg>tab 1</arg>
+</arguments>
+<status status="PASS" starttime="20200224 19:52:33.955" endtime="20200224 19:52:34.979"></status>
+</kw>
+<kw name="Send Keys" library="functions">
+<arguments>
+<arg>tab 1</arg>
+</arguments>
+<status status="PASS" starttime="20200224 19:52:34.979" endtime="20200224 19:52:35.987"></status>
+</kw>
+<kw name="Send Keys" library="functions">
+<arguments>
+<arg>tab 1</arg>
+</arguments>
+<status status="PASS" starttime="20200224 19:52:35.987" endtime="20200224 19:52:37.022"></status>
+</kw>
+<kw name="Send Keys" library="functions">
+<arguments>
+<arg>enter 1</arg>
+</arguments>
+<status status="PASS" starttime="20200224 19:52:37.022" endtime="20200224 19:52:38.034"></status>
+</kw>
+<status status="PASS" starttime="20200224 19:51:32.894" endtime="20200224 19:52:38.034"></status>
+</kw>
+<kw name="I navigate page" library="main">
+<arguments>
+<arg>https://www.theverge.com</arg>
+</arguments>
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>${args}</arg>
+<arg>${Browser}</arg>
+</arguments>
+<msg timestamp="20200224 19:52:38.038" level="INFO">Opening browser 'Chrome' to base url 'https://www.theverge.com'.</msg>
+<status status="PASS" starttime="20200224 19:52:38.038" endtime="20200224 19:53:00.277"></status>
+</kw>
+<status status="PASS" starttime="20200224 19:52:38.034" endtime="20200224 19:53:00.277"></status>
+</kw>
+<kw name="I put OS into sleep mode for" library="main">
+<arguments>
+<arg>60 seconds</arg>
+</arguments>
+<kw name="Os Sleep" library="functions">
+<arguments>
+<arg>${args}</arg>
+</arguments>
+<status status="PASS" starttime="20200224 19:53:00.277" endtime="20200224 19:54:01.341"></status>
+</kw>
+<status status="PASS" starttime="20200224 19:53:00.277" endtime="20200224 19:54:01.341"></status>
+</kw>
+<kw name="I wait for" library="main">
+<arguments>
+<arg>60 seconds</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${args}</arg>
+</arguments>
+<msg timestamp="20200224 19:55:01.349" level="INFO">Slept 1 minute</msg>
+<status status="PASS" starttime="20200224 19:54:01.343" endtime="20200224 19:55:01.349"></status>
+</kw>
+<status status="PASS" starttime="20200224 19:54:01.341" endtime="20200224 19:55:01.349"></status>
+</kw>
+<kw name="I open new tab and navigate to" library="main">
+<arguments>
+<arg>https://www.facebook.com</arg>
+</arguments>
+<kw name="Execute Javascript" library="Selenium2Library">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.open('${args}');</arg>
+</arguments>
+<msg timestamp="20200224 19:55:01.349" level="INFO">Executing JavaScript:
+window.open('https://www.facebook.com');
+Without any arguments.</msg>
+<status status="PASS" starttime="20200224 19:55:01.349" endtime="20200224 19:55:01.567"></status>
+</kw>
+<status status="PASS" starttime="20200224 19:55:01.349" endtime="20200224 19:55:01.567"></status>
+</kw>
+<kw name="I wait for" library="main">
+<arguments>
+<arg>60 seconds</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${args}</arg>
+</arguments>
+<msg timestamp="20200224 19:56:01.568" level="INFO">Slept 1 minute</msg>
+<status status="PASS" starttime="20200224 19:55:01.567" endtime="20200224 19:56:01.568"></status>
+</kw>
+<status status="PASS" starttime="20200224 19:55:01.567" endtime="20200224 19:56:01.568"></status>
+</kw>
+<kw name="I open the application" library="main">
+<arguments>
+<arg>calc.exe</arg>
+</arguments>
+<kw name="Run File" library="functions">
+<arguments>
+<arg>${args}</arg>
+</arguments>
+<status status="PASS" starttime="20200224 19:56:01.569" endtime="20200224 19:56:01.647"></status>
+</kw>
+<status status="PASS" starttime="20200224 19:56:01.568" endtime="20200224 19:56:01.647"></status>
+</kw>
+<kw name="I wait for" library="main">
+<arguments>
+<arg>60 seconds</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${args}</arg>
+</arguments>
+<msg timestamp="20200224 19:57:01.650" level="INFO">Slept 1 minute</msg>
+<status status="PASS" starttime="20200224 19:56:01.649" endtime="20200224 19:57:01.650"></status>
+</kw>
+<status status="PASS" starttime="20200224 19:56:01.649" endtime="20200224 19:57:01.650"></status>
+</kw>
+<kw name="I put OS into sleep mode for" library="main">
+<arguments>
+<arg>180 seconds</arg>
+</arguments>
+<kw name="Os Sleep" library="functions">
+<arguments>
+<arg>${args}</arg>
+</arguments>
+<status status="PASS" starttime="20200224 19:57:01.650" endtime="20200224 20:00:01.166"></status>
+</kw>
+<status status="PASS" starttime="20200224 19:57:01.650" endtime="20200224 20:00:01.174"></status>
+</kw>
+<kw name="I disable the network connection" library="main">
+<kw name="Run File Wait" library="functions">
+<arguments>
+<arg>ipconfig /release</arg>
+</arguments>
+<status status="PASS" starttime="20200224 20:00:01.178" endtime="20200224 20:00:02.693"></status>
+</kw>
+<kw name="I navigate page" library="main">
+<arguments>
+<arg>https://api2.timedoctor.com</arg>
+</arguments>
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>${args}</arg>
+<arg>${Browser}</arg>
+</arguments>
+<msg timestamp="20200224 20:00:02.693" level="INFO">Opening browser 'Chrome' to base url 'https://api2.timedoctor.com'.</msg>
+<status status="PASS" starttime="20200224 20:00:02.693" endtime="20200224 20:00:11.886"></status>
+</kw>
+<status status="PASS" starttime="20200224 20:00:02.693" endtime="20200224 20:00:11.886"></status>
+</kw>
+<kw name="Page Should Contain" library="Selenium2Library">
+<doc>Verifies that current page contains ``text``.</doc>
+<arguments>
+<arg>This site can’t be reached</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20200224 20:00:12.640" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20200224 20:00:12.253" endtime="20200224 20:00:12.640"></status>
+</kw>
+<msg timestamp="20200224 20:00:13.171" level="FAIL">Page should have contained text 'This site can’t be reached' but did not.</msg>
+<status status="FAIL" starttime="20200224 20:00:11.886" endtime="20200224 20:00:13.171"></status>
+</kw>
+<status status="FAIL" starttime="20200224 20:00:01.174" endtime="20200224 20:00:13.171"></status>
+</kw>
+<doc>Evaluation Task test case</doc>
+<status status="FAIL" starttime="20200224 19:49:55.168" endtime="20200224 20:00:13.175" critical="yes">Page should have contained text 'This site can’t be reached' but did not.</status>
+</test>
+<status status="FAIL" starttime="20200224 19:49:54.902" endtime="20200224 20:00:13.199"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1">Critical Tests</stat>
+<stat pass="0" fail="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" id="s1" name="Timedoctor">Timedoctor</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
