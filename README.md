@@ -11,6 +11,7 @@
 * pip install pyautogui
 * pip install configparser
 * pip install requests
+* pip install pywin32
 
 ## Setup Configuration
 * Input the correct user directory in main.robot file under ${user_path} Variables
