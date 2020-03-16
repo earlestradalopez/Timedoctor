@@ -6,10 +6,10 @@ Library     ${CURDIR}${/}modules${/}functions.py
 *** Variables ***
 ${Browser}      Chrome
 ${f_exist}      False
-${Email}        qa_test@test.com
+${Email}        empty
 ${TokenId}      empty
 ${user_path}    C:/Users/test
-${app_delay}    15s
+${app_delay}    20s
 
 *** Keywords ***
 I create a new silent company
@@ -17,7 +17,7 @@ I create a new silent company
     Should Not Be Empty     ${Email}
 
 I verify the Activity Timeuse
-    ${TokenId} =            getAuthorizationDetails
+    ${TokenId} =            getAuthorizationDetails     all
     Sleep                   360s
     ${f_exist} =            getActivityTimeuse      ${TokenId}
     Should Be True          ${f_exist}
@@ -39,6 +39,14 @@ I install the Timedoctor application
     Should Be True          ${f_exist}
     sendKeys                enter 1
 
+I install the Timedoctor application as silent mode
+    runFileWait             msiexec /i installer\\sfproc-3.0.72-5e65ba91f930fc00046a263a.msi
+     ${f_exist} =            check_file_exist    C:/Program Files (x86)/SFProc/staffservice.exe
+    Should Be True          ${f_exist}
+    ${f_exist} =            check_file_exist    C:/Program Files (x86)/SFProc/sfproc-registry.exe
+    Should Be True          ${f_exist}
+    Sleep                   ${app_delay}
+
 I uninstall the Timedoctor application
     runFile                 ${user_path}/Time Doctor 2/uninstall.exe
     Sleep                   ${app_delay}
@@ -47,6 +55,15 @@ I uninstall the Timedoctor application
     ${f_exist} =            check_file_not_exist    ${user_path}/Time Doctor 2/timedoctor2.exe
     Should Be True          ${f_exist}
     sendKeys                enter 1
+
+I uninstall the Timedoctor application as silent mode
+    runFileWait             msiexec /uninstall installer\\sfproc-3.0.72-5e65ba91f930fc00046a263a.msi /qn
+    Sleep                   ${app_delay}   
+    sendKeys                enter 1
+    ${f_exist} =            check_file_not_exist    C:/Program Files (x86)/SFProc/staffservice.exe
+    Should Be True          ${f_exist}
+    ${f_exist} =            check_file_not_exist    C:/Program Files (x86)/SFProc/sfproc-registry.exe    
+    Should Be True          ${f_exist}    
 
 I log in to Timedoctor application
     runFile                 ${user_path}/Time Doctor 2/timedoctor2.exe
@@ -74,6 +91,10 @@ I log in to Timedoctor application
 
 I download Timedoctor application
     downloadFile    https://s3.amazonaws.com/sfproc-downloads/3.0.52/windows/bitrock/timedoctor2-setup-3.0.52-windows.exe    installer/timedoctor2-setup-3.0.52-windows.exe
+
+I download Timedoctor application as silent mode
+    ${company_id} =            getAuthorizationDetails     company_id   
+    downloadFile    https://kwc5w69wa3.execute-api.us-east-1.amazonaws.com/production/msi-filename-redirect?hostname=2.timedoctor.com&companyId=${company_id}    installer/sfproc-3.0.72-5e65ba91f930fc00046a263a.msi
 
 I put OS into sleep mode for
     [Arguments]     ${args}
