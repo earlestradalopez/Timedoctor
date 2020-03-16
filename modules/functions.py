@@ -85,7 +85,7 @@ def signup():
 	  "email": email,
 	  "password": "123456",
 	  "company": "qa-automation-earl",
-	  "trackingMode": "",
+	  "trackingMode": "silent",
 	  "timezone": "",
 	  "referrer": "",
 	  "pricingPlan": "",
@@ -106,7 +106,7 @@ def signup():
 		print("Unsuccessful registration!")
 		return ''
 
-def getAuthorizationDetails():
+def getAuthorizationDetails(value):
 	import requests
 	import json
 	url = 'https://api2.timedoctor.com:443/api/1.0/authorization/login'
@@ -120,10 +120,12 @@ def getAuthorizationDetails():
 		}
 	data = requests.post(url, json =  myobj)
 	json_load = json.loads(data.content)
-
-	#print(json_load["data"]["token"])
-	#print(json_load["data"]["companies"][0]["id"])
-	return json_load["data"]["token"] + " " + json_load["data"]["companies"][0]["id"]
+	if value == 'token':
+		return json_load["data"]["token"]
+	if value == 'company_id':
+		return json_load["data"]["companies"][0]["id"]
+	else:
+		return json_load["data"]["token"] + " " + json_load["data"]["companies"][0]["id"]
 
 def getActivityTimeuse(tokenid):
 	import requests
@@ -161,7 +163,4 @@ def window_activate(text):
 		_window = w.GetWindowText (w.GetForegroundWindow())
 		print(_window)
 		sendKeys('alt+tab 3')
-		
-#window_activate('Calculator')
-#getActivityTimeuse('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IlhsQi13MnBIRFFBRXYwTW8iLCJyZXYiOjAsImV4cCI6IjIwMjAtMDgtMjBUMDE6MzI6NTIrMDA6MDAiLCJybyI6MX0.WeKhNJ2gAcQmke3HUhsoBqepd2wbFf2h4XduTDJzYWc XlB-w2pHDQAEv0Mp')
 
