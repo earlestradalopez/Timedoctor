@@ -21,7 +21,8 @@
 ## How to Run the automation
 * Run command line as Administrator 
 * Go to the Timedoctor automation directory - e.g. cd <Timedoctor automation directory>
-* Run `robot Test_Cases\timedoctor.robot`
+* Run for Silent mode: `robot Test_Cases\Silent-mode.robot`
+* Run for Active mode: `robot Test_Cases\timedoctor.robot`
   
 ![cmd image](https://github.com/earlestradalopez/Timedoctor/blob/master/images/cmd.png) 
   
